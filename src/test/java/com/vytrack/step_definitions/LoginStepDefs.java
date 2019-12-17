@@ -6,6 +6,10 @@ import io.cucumber.java.en.When;
 
 public class LoginStepDefs {
 
+    @Then("the user should be able to login")
+    public void the_user_should_be_able_to_login() {
+        System.out.println("Verifying that driver is logged in");
+    }
 
     @Given("the user is on the login page")
     public void the_user_is_on_the_login_page() {
@@ -17,10 +21,9 @@ public class LoginStepDefs {
         System.out.println("Entering driver login info");
     }
 
-    @Then("the user should be able to login")
-    public void the_user_should_be_able_to_login() {
-        System.out.println("Verifying that driver is logged in");
+    @When("the user enters the sales manager information")
+    public void the_user_enters_the_sales_manager_information() {
+        System.out.println("Entering sales manager login info");
     }
-
 
 }
