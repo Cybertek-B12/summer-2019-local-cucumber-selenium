@@ -8,7 +8,6 @@ Feature: Navigation menu
     When the user goes to Fleet, Vehicles
     Then the url should be https://qa3.vytrack.com/entity/Extend_Entity_Carreservation
 
-
   Scenario: Marketing --> Campaigns
     Given the user is on the login page
     And the user enters the sales manager information
