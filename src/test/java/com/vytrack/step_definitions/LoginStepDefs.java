@@ -33,6 +33,7 @@ public class LoginStepDefs {
         System.out.println("Entering driver login info");
         String dUsername = ConfigurationReader.get("driver_username");
         String dPassword = ConfigurationReader.get("driver_password");
+
         LoginPage loginPage = new LoginPage();
         loginPage.login(dUsername, dPassword);
 
@@ -41,6 +42,8 @@ public class LoginStepDefs {
     @When("the user enters the sales manager information")
     public void the_user_enters_the_sales_manager_information() {
         System.out.println("Entering sales manager login info");
+
+
     }
 
 
