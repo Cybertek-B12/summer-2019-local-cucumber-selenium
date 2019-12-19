@@ -42,7 +42,11 @@ public class LoginStepDefs {
     @When("the user enters the sales manager information")
     public void the_user_enters_the_sales_manager_information() {
         System.out.println("Entering sales manager login info");
+        String sUsername = ConfigurationReader.get("sales_manager_username");
+        String sPassword = ConfigurationReader.get("sales_manager_password");
 
+        LoginPage loginPage = new LoginPage();
+        loginPage.login(sUsername, sPassword);
 
     }
 
@@ -50,6 +54,13 @@ public class LoginStepDefs {
     @When("the user enters the store manager information")
     public void the_user_enters_the_store_manager_information() {
         System.out.println("Entering store manager login info");
+
+        String sUsername = ConfigurationReader.get("store_manager_username");
+        String sPassword = ConfigurationReader.get("store_manager_password");
+
+        LoginPage loginPage = new LoginPage();
+        loginPage.login(sUsername, sPassword);
+
     }
 
 
