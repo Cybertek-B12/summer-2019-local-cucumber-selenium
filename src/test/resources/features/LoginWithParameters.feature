@@ -1,4 +1,3 @@
-@wip
 Feature: Login as different users
 
   Scenario: Login as a driver user
@@ -22,3 +21,4 @@ Feature: Login as different users
     When user logs in using "storemanager85" and "UserUser123"
     Then the user should be able to login
     And the title should contain "Dashboard"
+
