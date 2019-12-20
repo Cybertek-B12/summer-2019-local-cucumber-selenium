@@ -18,3 +18,10 @@ Feature: Users should be able to login
   Scenario: Login as a s tore manager
     When the user enters the store manager information
     Then the user should be able to login
+
+
+  @store_manager
+  Scenario: Login and fail
+    When the user enters the store manager information
+    Then the user should be able to login
+    And the title should contain "JKGADKJHGDAF"
