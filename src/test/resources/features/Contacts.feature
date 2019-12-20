@@ -7,18 +7,24 @@ Feature: Contacts page
     Then default page number should be 1
 
 
-  @wip
   Scenario: Menu options
     Given a driver is logged in
     Then the user should see following menu options
-      | Fleet       |
-      | Customers   |
-      | Activities  |
-      | System      |
-      | System      |
-      | System      |
-      | System      |
-      | System      |
-      | System      |
-      | System      |
+      | Fleet      |
+      | Customers  |
+      | Activities |
+      | System     |
 
+
+  @wip
+  Scenario:  login as a given user
+    Given the user is on the login page
+    When the user logs in using following credentials
+      | fname    | Mizgin      |
+      | username | user1       |
+      | password | UserUser123 |
+      | lname    | Ayaz        |
+    Then the user should be able to login
+
+    # OPT+CMD+L
+    # CTRL+ALT+L
