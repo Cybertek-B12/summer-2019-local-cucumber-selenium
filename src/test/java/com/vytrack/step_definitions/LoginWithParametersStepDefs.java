@@ -39,6 +39,17 @@ public class LoginWithParametersStepDefs {
         new LoginPage().login(username, password);
     }
 
+
+
+
+
+
+
+
+
+
+
+
     @When("the user goes to {string} {string}")
     public void the_user_goes_to(String tab, String module) {
         new DashboardPage().navigateToModule(tab, module);
