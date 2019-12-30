@@ -16,7 +16,6 @@ Feature: Contacts page
       | System     |
 
 
-  @wip
   Scenario:  login as a given user
     Given the user is on the login page
     When the user logs in using following credentials
