@@ -25,7 +25,17 @@ Feature: Contacts page
       | lname    | Ayaz        |
     Then the user should be able to login
 
-    # OPT+CMD+L
-    # CTRL+ALT+L
-  # BREAK 15 mins
-  # code is shared
+
+  Scenario Outline: Login as many given users
+    Given the user is on the login page
+    When the user logs in using following credentials
+      | fname    | <firstname> |
+      | lname    | <lastname>  |
+      | username | <username>  |
+      | password | UserUser123 |
+    Then the user should be able to login
+
+    Examples:
+      | firstname | lastname | username        |
+      | Parsa     | Mehdi    | salesmanager101 |
+      | Rahwa     | Maaza    | storemanager85  |
