@@ -23,7 +23,6 @@ Feature: Login as different user types
 
 # test the login functionality using different users
 
-  @wip
   Scenario Outline: Test login with different types
     Given the user logs in as a "<usertype>"
 
@@ -32,3 +31,41 @@ Feature: Login as different user types
       | driver        |
       | sales manager |
       | store manager |
+
+
+  Scenario Outline: Test login as <usertype>
+    Given the user logs in as a "<usertype>"
+
+    Examples:
+      | usertype      |
+      | driver        |
+      | store manager |
+      | boss          |
+
+    # FORMAT MAC:OPTION+CMD+L
+    # FORMAT WIN:CTRL+ALT+L
+
+  @wip
+  Scenario Outline: Test login as <usertype>
+    Given the user logs in as a "<usertype>"
+    When the user goes to "<tab>" "<module>"
+    Then the title should contain "<title>"
+
+    Examples:
+      | usertype | tab        | module          | title                        |
+      | driver   | Activities | Calendar Events | Calendar Events - Activities |
+      | driver   | Customers  | Accounts        | Accounts - Customers         |
+
+
+
+
+
+
+
+
+
+
+
+
+
+
