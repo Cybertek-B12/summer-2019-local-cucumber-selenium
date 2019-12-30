@@ -19,14 +19,14 @@ Feature: Users should be able to login
     When the user enters the store manager information
     Then the user should be able to login
 
-
   @store_manager
   Scenario: Login and fail
     When the user enters the store manager information
     Then the user should be able to login
     And the title should contain "JKGADKJHGDAF"
 
-    @wip
+
+  @wip
   Scenario Outline: Login multiple
     When the user enters the <user> information
     Then the user should be able to login

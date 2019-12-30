@@ -45,7 +45,7 @@ Feature: Login as different user types
     # FORMAT MAC:OPTION+CMD+L
     # FORMAT WIN:CTRL+ALT+L
 
-
+  @wip
   Scenario Outline: Test login as <usertype>
     Given the user logs in as a "<usertype>"
     When the user goes to "<tab>" "<module>"
