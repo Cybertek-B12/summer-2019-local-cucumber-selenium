@@ -1,9 +1,6 @@
-Feature: Login as different user types
-
-  # WARM UP : implement the following scenarios
-  # you can reuse previous step defs classes or create a new one
-  # use any tag
-
+@accounts @VYT-312
+Feature: Multiple user types
+  @wip
   Scenario: Driver user
     Given the user logs in as a "driver"
     When the user goes to "Activities" "Calendar Events"
@@ -19,10 +16,7 @@ Feature: Login as different user types
     When the user goes to "Customers" "Accounts"
     Then the title should contain "Accounts - Customers"
 
-
-
-# test the login functionality using different users
-
+  @smoke
   Scenario Outline: Test login with different types
     Given the user logs in as a "<usertype>"
 
@@ -42,10 +36,6 @@ Feature: Login as different user types
       | store manager |
       | boss          |
 
-    # FORMAT MAC:OPTION+CMD+L
-    # FORMAT WIN:CTRL+ALT+L
-
-  @wip
   Scenario Outline: Test login as <usertype>
     Given the user logs in as a "<usertype>"
     When the user goes to "<tab>" "<module>"

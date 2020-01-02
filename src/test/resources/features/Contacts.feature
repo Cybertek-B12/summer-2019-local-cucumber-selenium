@@ -1,12 +1,6 @@
+@smoke @contacts @VYT-125
 Feature: Contacts page
-
-
-  Scenario: Default page number
-    Given a driver is logged in
-    When the user goes to "Customers" "Contacts"
-    Then default page number should be 1
-
-
+  @driver
   Scenario: Menu options
     Given a driver is logged in
     Then the user should see following menu options
@@ -14,7 +8,6 @@ Feature: Contacts page
       | Customers  |
       | Activities |
       | System     |
-
 
   Scenario:  login as a given user
     Given the user is on the login page
@@ -24,7 +17,6 @@ Feature: Contacts page
       | password | UserUser123 |
       | lname    | Ayaz        |
     Then the user should be able to login
-
 
   Scenario Outline: Login as many given users
     Given the user is on the login page

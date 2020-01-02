@@ -8,15 +8,19 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class LoginStepDefs {
+    private LoginPage loginPage = new LoginPage();
 
     @Then("the user should be able to login")
     public void the_user_should_be_able_to_login() {
         System.out.println("Verifying that user is logged in");
         BrowserUtils.waitFor(2);
         String actualTitle = Driver.get().getTitle();
-        Assert.assertEquals("Dashboard", actualTitle);
+        WebDriverWait webDriverWait = new WebDriverWait(Driver.get(), 5);
+        Assert.assertTrue(webDriverWait.until(ExpectedConditions.titleIs("Dashboard")));
     }
 
     @Given("the user is on the login page")
@@ -34,7 +38,7 @@ public class LoginStepDefs {
         String dUsername = ConfigurationReader.get("driver_username");
         String dPassword = ConfigurationReader.get("driver_password");
 
-        LoginPage loginPage = new LoginPage();
+        
         loginPage.login(dUsername, dPassword);
 
     }
@@ -45,7 +49,7 @@ public class LoginStepDefs {
         String sUsername = ConfigurationReader.get("sales_manager_username");
         String sPassword = ConfigurationReader.get("sales_manager_password");
 
-        LoginPage loginPage = new LoginPage();
+        
         loginPage.login(sUsername, sPassword);
 
     }
@@ -58,7 +62,7 @@ public class LoginStepDefs {
         String sUsername = ConfigurationReader.get("store_manager_username");
         String sPassword = ConfigurationReader.get("store_manager_password");
 
-        LoginPage loginPage = new LoginPage();
+        
         loginPage.login(sUsername, sPassword);
 
     }
@@ -85,7 +89,7 @@ public class LoginStepDefs {
                 // Assert.fail --> just fails the test
                 Assert.fail("Wrong user type provided");
         }
-        new LoginPage().login(username, password);
+        loginPage.login(username, password);
 
     }
 

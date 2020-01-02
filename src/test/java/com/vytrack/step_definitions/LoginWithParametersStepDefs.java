@@ -13,11 +13,13 @@ import org.junit.Assert;
 
 public class LoginWithParametersStepDefs {
 
+    private DashboardPage dashboardPage = new DashboardPage();
+    private LoginPage loginPage = new LoginPage();
+
     @When("user logs in using {string} and {string}")
     public void user_logs_in_using_and(String username, String password) {
         System.out.println("username = " + username);
         System.out.println("password = " + password);
-        LoginPage loginPage = new LoginPage();
         loginPage.login(username, password);
 
     }
@@ -30,42 +32,47 @@ public class LoginWithParametersStepDefs {
     }
 
 
-
     @Given("a driver is logged in")
     public void a_driver_is_logged_in() {
         Driver.get().get(ConfigurationReader.get("url"));
         String username = ConfigurationReader.get("driver_username");
         String password = ConfigurationReader.get("driver_password");
-        new LoginPage().login(username, password);
+        loginPage.login(username, password);
     }
-
-
-
-
-
-
-
-
-
-
 
 
     @When("the user goes to {string} {string}")
     public void the_user_goes_to(String tab, String module) {
-        new DashboardPage().navigateToModule(tab, module);
+        dashboardPage.navigateToModule(tab, module);
 
     }
 
-    @Then("default page number should be {int}")
-    public void default_page_number_should_be(Integer count) {
-        System.out.println("count = " + count);
+    @Given("I login as a {string}")
+    public void i_login_as_a(String user) {
+        Driver.get().get(ConfigurationReader.get("url"));
+        String username = null, password = null;
+        switch (user) {
+            case "driver":
+                username = ConfigurationReader.get("driver_username");
+                password = ConfigurationReader.get("driver_password");
+                break;
+            case "sales manager":
+                username = ConfigurationReader.get("sales_manager_username");
+                password = ConfigurationReader.get("sales_manager_password");
+                break;
+            case "store manager":
+                username = ConfigurationReader.get("store_manager_username");
+                password = ConfigurationReader.get("store_manager_password");
+                break;
+        }
+        System.out.println("username = " + username);
+        System.out.println("password = " + password);
+        loginPage.login(username, password);
+    }
 
-        ContactsPage contactsPage = new ContactsPage();
-        BrowserUtils.waitFor(3);
-        String text = contactsPage.pageCount.getAttribute("value");
-        System.out.println("text = " + text);
-        Integer actualCount = Integer.parseInt(text);
-        Assert.assertEquals(count, actualCount);
+    @When("I navigate to {string} {string}")
+    public void i_navigate_to(String tab, String module) {
+        dashboardPage.navigateToModule(tab, module);
 
     }
 
