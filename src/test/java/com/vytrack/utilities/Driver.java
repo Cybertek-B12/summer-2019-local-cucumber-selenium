@@ -26,7 +26,7 @@ public class Driver {
 
     public static WebDriver get() {
         //if this thread doesn't have driver - create it and add to pool
-        if (driverPool.get() == null || ((RemoteWebDriver) driverPool.get()).getSessionId() == null) {
+        if (driverPool.get() == null) {
 
             // get browser value either from system arguments or properties file
 
@@ -77,5 +77,6 @@ public class Driver {
 
     public static void closeDriver() {
         driverPool.get().quit();
+        driverPool.remove();
     }
 }
