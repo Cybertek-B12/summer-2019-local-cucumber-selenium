@@ -50,7 +50,8 @@
                 <version>2.22.2</version>
                 <configuration>
                     <parallel>methods</parallel>
-                    <useUnlimitedThreads>true</useUnlimitedThreads>
+                    <perCoreThreadCount>false</perCoreThreadCount>
+                    <threadCountMethods>2</threadCountMethods>
                     <includes>
                         <include>**/*CukesRunner.java</include>
                     </includes>
