@@ -26,11 +26,11 @@ public class Driver {
 
     public static WebDriver get() {
         //if this thread doesn't have driver - create it and add to pool
-        if (driverPool.get() == null || ((RemoteWebDriver) driverPool.get()).getSessionId() == null) {
+        if (driverPool.get() == null) {
 
-            // get browser value either from system arguments or properties file
-
-            String browser= System.getProperty("browser") != null?browser = System.getProperty("browser"):ConfigurationReader.get("browser");
+//            if we pass the driver from terminal then use that one
+//           if we do not pass the driver from terminal then use the one properties file
+            String browser = System.getProperty("browser") != null ? browser = System.getProperty("browser") : ConfigurationReader.get("browser");
 
             logger.info("Creating webdriver for - " + browser);
             switch (browser) {
@@ -77,5 +77,6 @@ public class Driver {
 
     public static void closeDriver() {
         driverPool.get().quit();
+        driverPool.remove();
     }
 }
