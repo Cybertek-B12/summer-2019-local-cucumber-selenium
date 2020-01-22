@@ -1,5 +1,6 @@
 package com.vytrack.step_definitions;
 
+import com.vytrack.pages.ContactsPage;
 import com.vytrack.pages.DashboardPage;
 import com.vytrack.pages.LoginPage;
 import com.vytrack.utilities.BrowserUtils;
@@ -33,13 +34,14 @@ public class ContactsStepDefs {
         Assert.assertEquals(list, actualList);
 
     }
+
     @When("the user logs in using following credentials")
     public void the_user_logs_in_using_following_credentials(Map<String, String> userData) {
         System.out.println(userData);
-        System.out.println("Firstname: "+ userData.get("fname"));
-        System.out.println("Lastname: "+ userData.get("lname"));
-        System.out.println("Username: "+ userData.get("username"));
-        System.out.println("Password: "+ userData.get("password"));
+        System.out.println("Firstname: " + userData.get("fname"));
+        System.out.println("Lastname: " + userData.get("lname"));
+        System.out.println("Username: " + userData.get("username"));
+        System.out.println("Password: " + userData.get("password"));
 
         LoginPage loginPage = new LoginPage();
 
@@ -48,8 +50,19 @@ public class ContactsStepDefs {
 
 
     @When("the user selects following filter option:")
-    public void the_user_selects_following_filter_option(List<List> filterOptions) {
-        System.out.println(filterOptions);
+    public void the_user_selects_following_filter_option(List<List<String>> filterOptions) {
+        ContactsPage contactsPage = new ContactsPage();
+        BrowserUtils.waitFor(2);
+        System.out.println("asdfasfd");
+
+        // click on the filter option
+        contactsPage.showHideFiltersBtn.click();
+
+        // iterating through the filters
+        for (List<String> filterOption : filterOptions) {
+            // enterFilterAndSearch() --> takes list of filter iformation and enters it on the ui
+            contactsPage.enterFilterAndSearch(filterOption);
+        }
 
     }
 

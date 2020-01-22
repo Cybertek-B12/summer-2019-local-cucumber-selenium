@@ -1,5 +1,6 @@
 @smoke @contacts @VYT-125
 Feature: Contacts page
+
   @driver
   Scenario: Menu options
     Given a driver is logged in
@@ -32,11 +33,11 @@ Feature: Contacts page
       | Parsa     | Mehdi    | salesmanager101 |
       | Rahwa     | Maaza    | storemanager85  |
 
-    @wip
+  @wip
   Scenario: Contacts with phone numbers
     Given the user logs in as a "store manager"
     And the user goes to "Customers" "Contacts"
     When the user selects following filter option:
-      | Phone      | is not empty |      |
+#      | Phone      | is not empty |      |
       | First name | contains     | Omar |
     Then main table display correct values
