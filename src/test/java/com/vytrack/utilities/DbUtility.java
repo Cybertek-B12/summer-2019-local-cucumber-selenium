@@ -12,6 +12,23 @@ public class DbUtility {
     private static Statement statement;
     private static ResultSet resultSet;
 
+    public static void main(String[] args) {
+        String url = ConfigurationReader.get("qa3_db_url");
+        String username = ConfigurationReader.get("qa3_db_username");
+        String password = ConfigurationReader.get("qa3_db_password");
+        createConnection(url, username, password);
+
+        String sql="select c.first_name, p.phone\n" +
+                "from orocrm_contact c\n" +
+                "join orocrm_contact_phone p\n" +
+                "on c.id = p.owner_id";
+
+        System.out.println(getQueryResultMap(sql));
+
+        destroyConnection();
+
+    }
+
     /**
      * Create a jdbc connection using the url, username, password
      * @param url
