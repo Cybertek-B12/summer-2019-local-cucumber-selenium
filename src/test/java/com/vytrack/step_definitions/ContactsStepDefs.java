@@ -4,6 +4,8 @@ import com.vytrack.pages.ContactsPage;
 import com.vytrack.pages.DashboardPage;
 import com.vytrack.pages.LoginPage;
 import com.vytrack.utilities.BrowserUtils;
+import com.vytrack.utilities.ConfigurationReader;
+import com.vytrack.utilities.DbUtility;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
@@ -68,8 +70,24 @@ public class ContactsStepDefs {
 
     @Then("main table display correct values")
     public void main_table_display_correct_values() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new cucumber.api.PendingException();
+        // GET THE ACTUAL FROM DATABASE
+        String url = ConfigurationReader.get("qa3_db_url");
+        String username = ConfigurationReader.get("qa3_db_username");
+        String password = ConfigurationReader.get("qa3_db_password");
+        DbUtility.createConnection(url, username, password);
+
+        String sql = "select c.first_name,  c.last_name, p.phone\n" +
+                "from orocrm_contact c\n" +
+                "join orocrm_contact_phone p\n" +
+                "on c.id = p.owner_id\n" +
+                "where first_name= 'Omar';";
+
+        List<Object> queryResultList = DbUtility.getRowList(sql);
+        System.out.println(queryResultList);
+
+
+
+
     }
 
 }

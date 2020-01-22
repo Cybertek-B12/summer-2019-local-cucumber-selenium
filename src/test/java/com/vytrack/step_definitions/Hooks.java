@@ -1,6 +1,7 @@
 package com.vytrack.step_definitions;
 
 
+import com.vytrack.utilities.DbUtility;
 import com.vytrack.utilities.Driver;
 import io.cucumber.core.api.Scenario;
 import io.cucumber.java.After;
@@ -27,6 +28,7 @@ public class Hooks {
         }
 
         Driver.closeDriver();
+        DbUtility.destroyConnection();
     }
 
 }
