@@ -31,3 +31,11 @@ Feature: Contacts page
       | firstname | lastname | username        |
       | Parsa     | Mehdi    | salesmanager101 |
       | Rahwa     | Maaza    | storemanager85  |
+
+  Scenario: Contacts with phone numbers
+    Given the user logs in as a "store manager"
+    And the user goes to "Customers" "Contacts"
+    When the user selects following filter option:
+      | Phone      | is not empty |      |
+      | First name | contains     | Omar |
+    Then main table display correct values

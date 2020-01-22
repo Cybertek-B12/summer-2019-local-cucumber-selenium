@@ -41,23 +41,24 @@
             <artifactId>log4j</artifactId>
             <version>1.2.17</version>
         </dependency>
+
     </dependencies>
     <build>
         <plugins>
             <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-surefire-plugin</artifactId>
-                <version>2.22.2</version>
-                <configuration>
-                    <parallel>methods</parallel>
-                    <perCoreThreadCount>false</perCoreThreadCount>
-                    <threadCountMethods>2</threadCountMethods>
-                    <includes>
-                        <include>**/*CukesRunner.java</include>
-                    </includes>
-                    <testFailureIgnore>true</testFailureIgnore>
-                </configuration>
-            </plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-surefire-plugin</artifactId>
+            <version>2.22.2</version>
+            <configuration>
+                <parallel>methods</parallel>
+                <perCoreThreadCount>false</perCoreThreadCount>
+                <threadCountMethods>10</threadCountMethods>
+                <includes>
+                    <include>**/*CukesRunner.java</include>
+                </includes>
+                <testFailureIgnore>true</testFailureIgnore>
+            </configuration>
+        </plugin>
             <plugin>
                 <groupId>net.masterthought</groupId>
                 <artifactId>maven-cucumber-reporting</artifactId>
