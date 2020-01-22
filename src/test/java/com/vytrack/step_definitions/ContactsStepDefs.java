@@ -8,12 +8,14 @@ import com.vytrack.utilities.ConfigurationReader;
 import com.vytrack.utilities.DbUtility;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import org.junit.Assert;
 import org.openqa.selenium.WebElement;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+
+import static org.junit.Assert.*;
+
 
 public class ContactsStepDefs {
     @Then("the user should see following menu options")
@@ -33,7 +35,7 @@ public class ContactsStepDefs {
         }
 
         // compare actual list to the expected list
-        Assert.assertEquals(list, actualList);
+        assertEquals(list, actualList);
 
     }
 
@@ -70,7 +72,7 @@ public class ContactsStepDefs {
 
     @Then("main table display correct values")
     public void main_table_display_correct_values() {
-        // GET THE ACTUAL FROM DATABASE
+        // GET THE EXPECTED FROM DATABASE
         String url = ConfigurationReader.get("qa3_db_url");
         String username = ConfigurationReader.get("qa3_db_username");
         String password = ConfigurationReader.get("qa3_db_password");
@@ -85,8 +87,22 @@ public class ContactsStepDefs {
         List<Object> queryResultList = DbUtility.getRowList(sql);
         System.out.println(queryResultList);
 
+        // GET THE ACTUAL FROM UI
+        ContactsPage contactsPage = new ContactsPage();
+        // the elements from ui
+        List<WebElement> mainDataTableRows = contactsPage.mainDataTableRows;
+        // convert to list of string
+        List<String> actualList = BrowserUtils.getElementsText(mainDataTableRows);
+        System.out.println(actualList);
 
-
+        // take one entry from the expected list in each iteration
+        for (Object expectedValue : queryResultList) {
+            // check if the actual contains the single expected value
+            if (!actualList.contains(expectedValue)) {
+                // if it does not contain, fail the test
+                fail("Db element not found in UI list: " +expectedValue);
+            }
+        }
 
     }
 

@@ -26,8 +26,9 @@ public class Hooks {
             final byte[] screenshot = ((TakesScreenshot) Driver.get()).getScreenshotAs(OutputType.BYTES);
             scenario.embed(screenshot, "image/png");
         }
-
+        // close webdriver/browser
         Driver.closeDriver();
+        // close database connection
         DbUtility.destroyConnection();
     }
 
