@@ -1,6 +1,6 @@
 @accounts @VYT-312
 Feature: Multiple user types
-  @wip
+
   Scenario: Driver user
     Given the user logs in as a "driver"
     When the user goes to "Activities" "Calendar Events"

@@ -32,6 +32,7 @@ Feature: Contacts page
       | Parsa     | Mehdi    | salesmanager101 |
       | Rahwa     | Maaza    | storemanager85  |
 
+    @wip
   Scenario: Contacts with phone numbers
     Given the user logs in as a "store manager"
     And the user goes to "Customers" "Contacts"

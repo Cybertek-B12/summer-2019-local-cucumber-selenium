@@ -47,4 +47,16 @@ public class ContactsStepDefs {
     }
 
 
+    @When("the user selects following filter option:")
+    public void the_user_selects_following_filter_option(List<List> filterOptions) {
+        System.out.println(filterOptions);
+
+    }
+
+    @Then("main table display correct values")
+    public void main_table_display_correct_values() {
+        // Write code here that turns the phrase above into concrete actions
+        throw new cucumber.api.PendingException();
+    }
+
 }
